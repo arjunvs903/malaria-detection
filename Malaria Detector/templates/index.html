@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with LeadMark landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Malaria Detector V2.0</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/leadmark.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/index.css') }}">
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+    <!-- page Navigation -->
+    <nav class="navbar custom-navbar navbar-expand-md navbar-light fixed-top affix-top" data-spy="affix"
+        data-offset-top="10">
+        <div class="container">
+            <a class="navbar-brand" href="">
+                <img src="{{ url_for('static', filename='assets/img/logo.png') }}" id="logo" class="inverted" alt="">
+            </a>
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ulink">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+
+                    <li class="nav-item ulink">
+                        <a class="nav-link" href="#service" id="serv-link">Detect</a>
+                    </li>
+
+                    <li class="nav-item ulink">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Of Second Navigation -->
+
+    <!-- Page Header -->
+    <header class="header">
+        <div class="overlay">
+            <h1 class="title">Malaria Detector</h1>
+        </div>
+        <div class="shape">
+            <svg viewBox="0 0 1500 200">
+                <path
+                    d="m 0,240 h 1500.4828 v -71.92164 c 0,0 -286.2763,-81.79324 -743.19024,-81.79324 C 300.37862,86.28512 0,168.07836 0,168.07836 Z">
+                </path>
+            </svg>
+        </div>
+        <div class="mouse-icon">
+            <div class="wheel"></div>
+        </div>
+
+    </header>
+    <!-- End Of Page Header -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" align="justify">
+                <p>Malaria is a deadly parasitic disease that affects millions of people worldwide, particularly in
+                    regions with high mosquito populations. Detecting malaria in its early stages is crucial for
+                    effective management and control of the disease. Early treatment can prevent severe complications
+                    and reduce transmission, saving lives and reducing the overall burden of malaria in communities.</p>
+                <p>The use of artificial intelligence (AI) in detecting malaria from cell images offers significant
+                    advantages. AI algorithms can automate the process of malaria diagnosis, improving efficiency and
+                    reducing human error. They can analyze large volumes of images with consistent accuracy, detecting
+                    subtle features that may be difficult to discern with the naked eye. This can lead to improved
+                    sensitivity and specificity in detecting malaria parasites, enhancing the accuracy of diagnosis.</p>
+                <p>AI-based malaria detection methods also have the potential to be deployed in remote or underserved
+                    areas where access to expert microscopy services may be limited. This can expand the reach of
+                    malaria diagnosis and improve healthcare access for vulnerable populations.</p>
+            </div>
+        </div>
+        <br /><br />
+    </div>
+
+    <!-- Service Section -->
+    <section id="service" class="section pt-0">
+        <div class="container">
+            <h6 class="section-title text-center">
+                <br /><br />
+                <span class="zoom-out gradient-text expanded-spacing">ANALYZE CELL IMAGE</span>
+            </h6>
+            <h6 class="section-subtitle text-center mb-5 pb-3"></h6>
+
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6">
+                    <form method="post" action="/process" enctype="multipart/form-data">
+                        <div class="fclass" align="center">
+                            <img src="{% if upimg == '0' %}{{ url_for('static', filename='assets/img/upload.jpg') }}{% else %}{{ upimg }}{% endif %}"
+    class="img" name="image" id="image">
+                            <br />
+                            <input type="file" style="display: none;" id="uploadbtn" name="image_file"
+                                accept=".png, .jpg, .jpeg, .bmp">
+                            <input type="button" value="Upload" class="btn btn-primary rounded w-md mt-3"
+                                onclick="$('#uploadbtn').click()">
+                            <input type="submit" value="Analyze" class="bb btn btn-primary rounded w-md mt-3"
+                                id="submitbtn">
+                            <input type="hidden" value="0" name="isTrue" id="isTrue">
+                        </div>
+                    </form>
+
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+		{% if disp %}
+            <div class="row">
+                
+                    <div class="col-lg-12">
+<div align="center">
+                        <br /><br />
+                        <h6 class="section-title text-center">
+                            <span class="zoom-out gradient-text expanded-spacing">ASSESSMENT RESULT</span>
+                        </h6>
+                        <div class="" align="justify">
+				
+                            {% if detect == 0 %}
+                            <div align="center"><span class="testresneg">The cell image contains malaria.</span></div>
+                            <br />
+                            <span class="addres">
+                                <b><u>Additional Information:</u></b><br />
+                                <ul type="-">
+                                    <li>Malaria parasites were detected in the cell image.</li>
+                                    <li>Further diagnostic tests and treatment may be required to manage the infection.
+                                    </li>
+                                    <li>It is important to follow appropriate healthcare protocols and seek medical
+                                        advice for proper management of malaria.</li>
+                                    <li>Malaria is a serious parasitic disease that can cause severe illness or even
+                                        death if left untreated.</li>
+                                    <li>Preventive measures such as insecticide-treated bed nets, indoor residual
+                                        spraying, and antimalarial medication can be effective in reducing the risk of
+                                        malaria transmission.</li>
+                                    <li>Early detection and prompt treatment of malaria are essential for preventing
+                                        complications and reducing the spread of the disease.</li>
+                                </ul>
+                            </span>
+                            {% else %}
+                            <div align="center"><span class="testrespos">The cell doesn't contain malaria.</span><br /></div>
+                            {% endif %}
+				{% endif %}
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End OF Service Section -->
+	
+
+    <section id="about" class="section pt-10">
+        <div class="container">
+            <h6 class="section-title text-center">
+                <span class="zoom-out gradient-text expanded-spacing">ABOUT PROJECT</span>
+            </h6>
+            <h6></h6>
+            <div class="row">
+                <div class="col-lg-12" align="justify">
+                    <p>
+                        This project, called "Malaria Detector", utilizes the ResNet-50 architecture
+                        and transfer learning mechanism to detect malaria in blood smear images.
+                        The project aims to provide an accurate and efficient solution for malaria
+                        detection using deep learning techniques.
+                    </p>
+                    <p>
+                        The ResNet-50 architecture is a popular convolutional neural network (CNN)
+                        architecture that has been pre-trained on a large dataset and can be fine-tuned
+                        for specific tasks, such as image classification or object detection. The transfer
+                        learning mechanism allows the model to leverage the learned features from a pre-trained
+                        model and adapt them to the specific task of malaria detection.
+                    </p>
+                    <p>
+                        This project was implemented using Python and deep learning libraries such as TensorFlow
+                        and Keras. The dataset used for training and validation was obtained from ABC Medical Research
+                        Institute,
+                        and the model was trained on a high-performance computing cluster with NVIDIA GPUs. The project
+                        achieved an
+                        accuracy of 96% on a test set of 32,000 images.
+                    </p>
+                    <p>
+                        For more information about the "Malaria Detector" project, please refer to the project
+                        documentation or contact me.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section has-img-bg pb-0">
+        <div class="container">
+
+            <!-- Page Footer -->
+            <footer class="mt-5 py-4 border-top border-secondary">
+            </footer>
+            <!-- End of Page Footer -->
+        </div>
+    </section>
+    {% if disp %}
+    <script>
+        $(document).ready(function() {
+            $("#serv-link").trigger("click");
+        });
+    </script>
+    {% endif %}
+    <!-- core  -->
+    <script src="{{ url_for('static', filename='assets/js/jquery-3.4.1.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.affix.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.bundle.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/isotope.pkgd.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/leadmark.js') }}"></script>
+    <script>
+
+        $("#uploadbtn").change(function () {
+            let ext = ($(this).val().split("\\").pop().split(".").pop()).toLowerCase();
+            let exts = ['png', 'jpg', 'jpeg', 'bmp']
+            if ($.inArray(ext, exts) !== -1) {
+                $("#isTrue").val("1")
+                var file = this.files[0];
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#image").attr("src", e.target.result);
+                }
+                reader.readAsDataURL(file);
+            } else {
+                alert("Please upload a valid image!\nSupported types are: png, jpg, bmp")
+                $("#isTrue").val("0")
+                $("#image").attr("src", "../static/assets/img/upload.jpg");
+            }
+        })
+
+        window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 1) {
+            $("#logo").removeAttr("class")
+        } else {
+            $("#logo").attr("class", "inverted")
+        }})
+    </script>
+
+
+</body>
+
+</html>

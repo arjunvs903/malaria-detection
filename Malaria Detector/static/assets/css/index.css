@@ -1,0 +1,63 @@
+.fclass .img{
+    height: 300px;
+    width: 450px;
+    padding:10px;
+    border: 4px dotted rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+.fclass{
+
+}
+
+.zoom-out {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .zoom-out:hover {
+    transform: scale(0.9);
+  }
+
+  /* Define the linear gradient for font color */
+  .gradient-text {
+    background: linear-gradient(to right, #000000, #064ede);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  /* Define the expanded spacing between characters */
+  .expanded-spacing {
+    letter-spacing: 0.15em;
+    font-weight:bold;
+    font-size:35px;
+  }
+
+  div>p{
+    font-size:18px;
+    letter-spacing: 0.15rem;
+  }
+
+  .testresneg{
+    color:red;
+    font-weight:bold;
+    font-size:18px;
+  }
+
+  .testrespos{
+    color:green;
+    font-weight:bold;
+    font-size:18px;
+  }
+
+  .addres{
+    font-size:18px;
+  }
+
+  .ulink:hover{
+    transform:scale(1.25);
+  }
+
+
+  .inverted{
+     filter:invert(100%);
+  }

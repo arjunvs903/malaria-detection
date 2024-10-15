@@ -1,0 +1,7 @@
+ipykernel
+numpy
+matplotlib
+pillow
+flask
+glob
+tqdm

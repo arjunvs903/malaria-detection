@@ -1,0 +1,8 @@
+ipykernel
+tensorflow>=2.12.0 
+numpy
+matplotlib
+pillow
+flask
+glob
+tqdm
